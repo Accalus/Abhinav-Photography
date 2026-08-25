@@ -1,0 +1,5 @@
+DROP YOUR PORTRAIT PHOTOS IN THIS FOLDER
+
+Supported: JPG, JPEG, PNG, WEBP, GIF, AVIF
+
+You do not need to edit index.html. The website reads this folder automatically on GitHub Pages.
