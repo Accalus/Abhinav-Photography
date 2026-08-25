@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Abhinav Subedi — photographer working across nature, street and portrait photography.">
+  <meta name="theme-color" content="#090909">
+  <title>Abhinav Subedi — Photographer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#090909;--text:#f3f1ec;--muted:#a4a19a;--line:rgba(255,255,255,.12);--max:1440px;--pad:clamp(18px,4vw,64px)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:"DM Sans",system-ui,sans-serif;line-height:1.5}body.locked{overflow:hidden}
+    a{color:inherit;text-decoration:none}button{font:inherit}img{display:block;max-width:100%}
+    .site-header{position:fixed;inset:0 0 auto;z-index:20;border-bottom:1px solid transparent;transition:.3s}
+    .site-header.scrolled{background:rgba(9,9,9,.82);border-color:var(--line);backdrop-filter:blur(14px)}
+    .nav{width:min(var(--max),100%);margin:auto;min-height:72px;padding:0 var(--pad);display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{font-size:14px;font-weight:500;letter-spacing:.04em;white-space:nowrap}
+    .nav-links{display:flex;align-items:center;gap:26px;font-size:12px;color:#d0cec8}.nav-links a{transition:color .2s}.nav-links a:hover{color:#fff}
+    .nav-instagram{border:1px solid var(--line);border-radius:999px;padding:9px 13px}
+    .hero{min-height:100svh;display:grid;align-items:end;position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+    .hero:before{content:"";position:absolute;inset:0;background-image:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.12) 35%,rgba(0,0,0,.86)),var(--hero-image,none);background-position:center;background-size:cover;background-repeat:no-repeat;background-color:#111}
+    .hero-content{position:relative;z-index:1;width:min(var(--max),100%);margin:auto;padding:150px var(--pad) 58px}
+    .eyebrow{color:#d1cec6;font-size:11px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:18px}
+    h1{margin:0;max-width:900px;font-family:"Playfair Display",Georgia,serif;font-size:clamp(54px,10vw,150px);font-weight:500;letter-spacing:-.045em;line-height:.88}
+    .hero-bottom{margin-top:34px;display:flex;justify-content:space-between;align-items:end;gap:30px}.tagline{max-width:470px;color:#d0cec8;font-size:clamp(15px,1.5vw,19px)}.scroll-link{font-size:12px;color:#d0cec8;white-space:nowrap}
+    .section{width:min(var(--max),100%);margin:auto;padding:clamp(76px,10vw,140px) var(--pad)}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:42px}
+    .section-kicker{color:var(--muted);font-size:11px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:10px}
+    h2{margin:0;font-family:"Playfair Display",Georgia,serif;font-size:clamp(38px,6vw,76px);line-height:.95;font-weight:500;letter-spacing:-.035em}
+    .filters{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}.filter{cursor:pointer;border:1px solid var(--line);background:transparent;color:#bcb9b2;border-radius:999px;padding:9px 14px;font-size:12px;transition:.2s}
+    .filter:hover,.filter.active{color:#fff;border-color:rgba(255,255,255,.42);background:rgba(255,255,255,.06)}
+    .gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(10px,1.4vw,20px)}
+    .photo-card{position:relative;grid-column:span 4;border:0;padding:0;background:#111;cursor:pointer;overflow:hidden;aspect-ratio:4/5;text-align:left}
+    .photo-card:nth-child(3n+2){aspect-ratio:4/5.4}.photo-card:nth-child(5n+1){grid-column:span 6;aspect-ratio:16/10}
+    .photo-card img{width:100%;height:100%;object-fit:cover;transition:transform .65s cubic-bezier(.2,.7,.2,1),opacity .35s}.photo-card:hover img{transform:scale(1.035)}
+    .photo-meta{position:absolute;inset:auto 0 0;padding:40px 18px 16px;color:#fff;display:flex;justify-content:space-between;align-items:end;gap:10px;background:linear-gradient(transparent,rgba(0,0,0,.75));opacity:0;transition:opacity .25s}
+    .photo-card:hover .photo-meta,.photo-card:focus-visible .photo-meta{opacity:1}.photo-meta span{font-size:13px}.photo-meta small{color:#d0cec8;font-size:10px;text-transform:uppercase;letter-spacing:.12em}.photo-card.broken{display:none}
+    .empty-state{grid-column:1/-1;color:var(--muted);padding:40px 0;border-top:1px solid var(--line)}
+    .about{display:grid;grid-template-columns:1fr 1.4fr;gap:clamp(40px,8vw,120px);border-top:1px solid var(--line)}
+    .about-copy{max-width:690px;color:#c9c6bf;font-size:clamp(18px,2vw,26px);line-height:1.35}.about-copy p{margin:0 0 24px}
+    .contact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:30px}
+    .contact-item{background:var(--bg);padding:22px}.contact-item small{display:block;color:var(--muted);text-transform:uppercase;letter-spacing:.13em;font-size:9px;margin-bottom:8px}.contact-item a,.contact-item span{font-size:14px;word-break:break-word}
+    footer{border-top:1px solid var(--line);padding:28px var(--pad)}.footer-inner{width:min(var(--max),100%);margin:auto;display:flex;justify-content:space-between;gap:20px;color:var(--muted);font-size:11px}.footer-inner a:hover{color:#fff}
+    .lightbox{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.94);display:none;place-items:center;padding:30px}.lightbox.open{display:grid}
+    .lightbox-image{max-width:min(94vw,1500px);max-height:86vh;width:auto;height:auto;object-fit:contain}
+    .lb-close,.lb-prev,.lb-next{position:absolute;border:1px solid rgba(255,255,255,.2);background:rgba(0,0,0,.35);color:#fff;width:44px;height:44px;border-radius:50%;cursor:pointer;display:grid;place-items:center}
+    .lb-close{top:22px;right:22px;font-size:22px}.lb-prev{left:22px;top:50%;transform:translateY(-50%)}.lb-next{right:22px;top:50%;transform:translateY(-50%)}
+    .lb-caption{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);color:#d0cec8;font-size:11px;text-align:center}
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}.reveal.visible{opacity:1;transform:none}
+    @media(max-width:800px){.nav-links a:not(.nav-instagram){display:none}.hero-content{padding-bottom:38px}.hero-bottom{display:block}.scroll-link{display:inline-block;margin-top:20px}.section-head{display:block}.filters{justify-content:flex-start;margin-top:24px}.photo-card,.photo-card:nth-child(5n+1){grid-column:span 6;aspect-ratio:4/5}.photo-meta{opacity:1}.about{grid-template-columns:1fr}}
+    @media(max-width:520px){.nav{min-height:62px}h1{font-size:clamp(52px,16vw,84px)}.gallery{gap:8px}.photo-card,.photo-card:nth-child(5n+1){grid-column:span 12;aspect-ratio:4/5}.contact-grid{grid-template-columns:1fr}.footer-inner{display:block}.footer-inner span{display:block;margin-bottom:10px}.lightbox{padding:16px}.lb-prev{left:12px}.lb-next{right:12px}}
+  </style>
+</head>
+<body>
+<header class="site-header" id="siteHeader">
+  <nav class="nav" aria-label="Main navigation">
+    <a class="brand" href="#top">ABHINAV SUBEDI</a>
+    <div class="nav-links">
+      <a href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact</a>
+      <a class="nav-instagram" href="https://instagram.com/abhinavsubedi_" target="_blank" rel="noopener">Instagram ↗</a>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="hero-content">
+    <div class="eyebrow">Photographer · Nature · Street · Portrait</div>
+    <h1>Frames of<br>the real.</h1>
+    <div class="hero-bottom">
+      <p class="tagline">Quiet moments, changing light, and honest people — photographed as I find them.</p>
+      <a class="scroll-link" href="#work">↓ Explore the work</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="work">
+  <div class="section-head">
+    <div><div class="section-kicker">Selected work</div><h2>Photography</h2></div>
+    <div class="filters" role="group" aria-label="Filter photographs">
+      <button class="filter active" data-filter="all">All</button>
+      <button class="filter" data-filter="nature">Nature</button>
+      <button class="filter" data-filter="street">Street</button>
+      <button class="filter" data-filter="portrait">Portrait</button>
+    </div>
+  </div>
+  <div class="gallery" id="gallery">
+    <div class="empty-state" id="loadingState">Loading photographs…</div>
+    <div class="empty-state" id="emptyState" hidden>No photographs in this category yet.</div>
+  </div>
+</section>
+
+<section class="section about" id="about">
+  <div><div class="section-kicker">About</div><h2>Behind<br>the camera.</h2></div>
+  <div class="about-copy">
+    <p>I'm Abhinav Subedi, a photographer focused on nature, street and portrait photography.</p>
+    <p>I like photographs that feel discovered rather than staged — light, atmosphere, movement and small details that make a moment worth remembering.</p>
+    <div class="contact-grid" id="contact">
+      <div class="contact-item"><small>Email</small><a href="mailto:aessabhinavsubedi@gmail.com">aessabhinavsubedi@gmail.com</a></div>
+      <div class="contact-item"><small>Phone</small><a href="tel:+9779823040237">9823040237</a></div>
+      <div class="contact-item"><small>Instagram</small><a href="https://instagram.com/abhinavsubedi_" target="_blank" rel="noopener">@abhinavsubedi_ ↗</a></div>
+      <div class="contact-item"><small>Availability</small><span>Photography & collaborations</span></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="footer-inner"><span>© <span id="year"></span> Abhinav Subedi</span><a href="https://instagram.com/abhinavsubedi_" target="_blank" rel="noopener">@abhinavsubedi_ ↗</a></div></footer>
+
+<div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Photo viewer">
+  <button class="lb-close" id="lbClose" aria-label="Close photo viewer">×</button>
+  <button class="lb-prev" id="lbPrev" aria-label="Previous photo">‹</button>
+  <img class="lightbox-image" id="lbImage" alt="">
+  <button class="lb-next" id="lbNext" aria-label="Next photo">›</button>
+  <div class="lb-caption" id="lbCaption"></div>
+</div>
+
+<script>
+/*
+  PHOTO AUTO-LOADER
+  ------------------------------------------------------------------
+  You only need to drag photos into:
+    images/nature/
+    images/street/
+    images/portrait/
+
+  When this site is published on GitHub Pages, the gallery reads those
+  folders automatically from the public GitHub repository. You do NOT
+  need to edit this HTML every time you add a photo.
+*/
+const GITHUB_OWNER = "Accalus";
+const GITHUB_REPO = "Abhinav-Portfilio-Photography";
+const GITHUB_BRANCH = "main";
+const CATEGORIES = ["nature", "street", "portrait"];
+const IMAGE_EXTENSIONS = /\\.(jpe?g|png|webp|gif|avif)$/i;
+
+const gallery = document.getElementById("gallery");
+const emptyState = document.getElementById("emptyState");
+const loadingState = document.getElementById("loadingState");
+const filters = [...document.querySelectorAll(".filter")];
+const header = document.getElementById("siteHeader");
+const lightbox = document.getElementById("lightbox");
+const lbImage = document.getElementById("lbImage");
+const lbCaption = document.getElementById("lbCaption");
+const hero = document.querySelector(".hero");
+
+let PHOTOS = [];
+let current = 0;
+let activeFilter = "all";
+
+function humanize(filename) {
+  return filename
+    .replace(/\\.[^.]+$/, "")
+    .replace(/[_-]+/g, " ")
+    .replace(/\\s+/g, " ")
+    .trim()
+    .replace(/\\b\\w/g, c => c.toUpperCase()) || "Untitled";
+}
+
+function categoryLabel(category) {
+  return category.charAt(0).toUpperCase() + category.slice(1);
+}
+
+function localFallbackPhotos() {
+  // These are only a safety fallback if the GitHub API is temporarily unavailable.
+  return [
+    ["images/nature/IMG_935HGHHF9.jpg", "Sunset Silhouette", "nature"],
+    ["images/nature/AbhinavSubedi_cs_11.jpg", "Golden Hour", "nature"],
+    ["images/nature/IMG_9;355.jpg", "Birds on a Branch", "nature"],
+    ["images/nature/IMG_9362.jpg", "Light on Water", "nature"],
+    ["images/nature/IMG_9bhgh362.jpg", "Water Reflection", "nature"],
+    ["images/nature/IMG_9196.jpg", "Night Clouds", "nature"],
+    ["images/nature/IMG_9210.jpg", "Moon", "nature"],
+    ["images/nature/IMG_8960.jpg", "Cloud Study", "nature"],
+    ["images/portrait/IMG_9336.jpg", "Portrait with Bicycle", "portrait"]
+  ].map(([src, title, category]) => ({src, title, category}));
+}
+
+async function getFolderPhotos(category) {
+  const api = `https://api.github.com/repos/${encodeURIComponent(GITHUB_OWNER)}/${encodeURIComponent(GITHUB_REPO)}/contents/images/${category}?ref=${encodeURIComponent(GITHUB_BRANCH)}`;
+  const response = await fetch(api, {headers: {"Accept": "application/vnd.github+json"}});
+  if (!response.ok) throw new Error(`GitHub API returned ${response.status}`);
+  const files = await response.json();
+  if (!Array.isArray(files)) return [];
+
+  return files
+    .filter(file => file.type === "file" && IMAGE_EXTENSIONS.test(file.name))
+    .map(file => ({
+      src: file.download_url || `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/images/${category}/${encodeURIComponent(file.name)}`,
+      title: humanize(file.name),
+      category
+    }));
+}
+
+function setHeroImage(photo) {
+  if (!photo) {
+    hero.style.setProperty("--hero-image", "none");
+    return;
+  }
+  hero.style.setProperty("--hero-image", `url("${photo.src.replace(/"/g, '\\"')}")`);
+}
+
+function renderGallery() {
+  gallery.querySelectorAll(".photo-card").forEach(card => card.remove());
+
+  const visiblePhotos = PHOTOS.filter(photo => activeFilter === "all" || photo.category === activeFilter);
+  emptyState.hidden = visiblePhotos.length !== 0;
+
+  visiblePhotos.forEach((photo, visibleIndex) => {
+    const originalIndex = PHOTOS.indexOf(photo);
+    const card = document.createElement("button");
+    card.className = "photo-card reveal";
+    card.type = "button";
+    card.dataset.category = photo.category;
+    card.dataset.index = originalIndex;
+    card.setAttribute("aria-label", `Open ${photo.title}`);
+
+    const img = document.createElement("img");
+    img.src = photo.src;
+    img.alt = photo.title;
+    img.loading = visibleIndex < 4 ? "eager" : "lazy";
+    img.decoding = "async";
+    img.addEventListener("error", () => card.remove());
+
+    const meta = document.createElement("span");
+    meta.className = "photo-meta";
+    meta.innerHTML = `<span></span><small>${categoryLabel(photo.category)}</small>`;
+    meta.querySelector("span").textContent = photo.title;
+
+    card.append(img, meta);
+    card.addEventListener("click", () => openLightbox(originalIndex));
+    gallery.insertBefore(card, emptyState);
+  });
+
+  document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+  if (activeFilter !== "all" && visiblePhotos.length === 0) {
+    emptyState.textContent = `No ${activeFilter} photographs yet.`;
+  } else if (PHOTOS.length === 0) {
+    emptyState.textContent = "Add JPG, JPEG, PNG, WEBP or GIF files to the images folders on GitHub.";
+  } else {
+    emptyState.textContent = "No photographs in this category yet.";
+  }
+}
+
+async function loadPhotos() {
+  loadingState.hidden = false;
+  try {
+    const results = await Promise.all(CATEGORIES.map(getFolderPhotos));
+    PHOTOS = results.flat();
+    if (PHOTOS.length === 0) PHOTOS = localFallbackPhotos();
+  } catch (error) {
+    console.warn("Could not read GitHub image folders. Using local fallback images.", error);
+    PHOTOS = localFallbackPhotos();
+  }
+
+  loadingState.hidden = true;
+  setHeroImage(PHOTOS.find(photo => photo.category === "nature") || PHOTOS[0]);
+  renderGallery();
+}
+
+function applyFilter(filter) {
+  activeFilter = filter;
+  filters.forEach(button => button.classList.toggle("active", button.dataset.filter === filter));
+  renderGallery();
+}
+
+filters.forEach(button => button.addEventListener("click", () => applyFilter(button.dataset.filter)));
+
+function openLightbox(index) {
+  current = index;
+  const photo = PHOTOS[current];
+  if (!photo) return;
+  lbImage.src = photo.src;
+  lbImage.alt = photo.title;
+  lbCaption.textContent = `${photo.title} · ${categoryLabel(photo.category)}`;
+  lightbox.classList.add("open");
+  lightbox.setAttribute("aria-hidden", "false");
+  document.body.classList.add("locked");
+}
+
+function closeLightbox() {
+  lightbox.classList.remove("open");
+  lightbox.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("locked");
+  lbImage.removeAttribute("src");
+}
+
+function changePhoto(step) {
+  if (!PHOTOS.length) return;
+  current = (current + step + PHOTOS.length) % PHOTOS.length;
+  openLightbox(current);
+}
+
+document.getElementById("lbClose").addEventListener("click", closeLightbox);
+document.getElementById("lbPrev").addEventListener("click", () => changePhoto(-1));
+document.getElementById("lbNext").addEventListener("click", () => changePhoto(1));
+lightbox.addEventListener("click", e => { if (e.target === lightbox) closeLightbox(); });
+document.addEventListener("keydown", e => {
+  if (!lightbox.classList.contains("open")) return;
+  if (e.key === "Escape") closeLightbox();
+  if (e.key === "ArrowLeft") changePhoto(-1);
+  if (e.key === "ArrowRight") changePhoto(1);
+});
+
+window.addEventListener("scroll", () => header.classList.toggle("scrolled", window.scrollY > 20), {passive:true});
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add("visible");
+  });
+}, {threshold:.08});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+loadPhotos();
+</script>
+</body>
+</html>

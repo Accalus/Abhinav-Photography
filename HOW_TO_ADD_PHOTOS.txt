@@ -1,0 +1,17 @@
+ABHINAV SUBEDI PHOTOGRAPHY — HOW TO ADD PHOTOS
+
+1. Open the images folder.
+2. Put nature photos in images/nature/
+3. Put street photos in images/street/
+4. Put portrait photos in images/portrait/
+5. Upload/commit those files to the main branch on GitHub.
+6. Wait a minute or two for GitHub Pages to rebuild.
+7. Refresh your website.
+
+IMPORTANT:
+- You do NOT need to edit index.html when adding photos.
+- The website automatically reads the three image folders from this GitHub repository.
+- Supported formats: JPG, JPEG, PNG, WEBP, GIF, AVIF.
+- Use simple filenames when possible, e.g. sunset.jpg, street-01.jpg, portrait-john.jpg.
+- GitHub Pages must be the site you are viewing for the automatic folder reader to work.
+- The repository is configured in index.html as Accalus/Abhinav-Portfilio-Photography on the main branch.
